@@ -1,12 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Redis.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+services.ConfigureRedis(builder.Configuration);
 
 var app = builder.Build();
 
