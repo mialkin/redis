@@ -9,6 +9,7 @@ namespace Redis.Controllers;
 public class RedisController : ControllerBase
 {
     private readonly IRedisClient _redisClient;
+    private readonly TimeSpan _cacheExpiry = TimeSpan.FromHours(12);
 
     public RedisController(IRedisClient redisClient) => _redisClient = redisClient;
 
@@ -17,8 +18,9 @@ public class RedisController : ControllerBase
     {
         var randomKey = "random_key:" + Guid.NewGuid();
         var value = "value_" + Guid.NewGuid();
+        var cacheExpiry = TimeSpan.FromHours(12);
 
-        await _redisClient.SetAsync(randomKey, value, TimeSpan.FromHours(12));
+        await _redisClient.SetAsync(randomKey, value, _cacheExpiry);
         return Ok(randomKey);
     }
 
