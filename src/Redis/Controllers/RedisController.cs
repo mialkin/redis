@@ -18,7 +18,6 @@ public class RedisController : ControllerBase
     {
         var randomKey = "random_key:" + Guid.NewGuid();
         var value = "value_" + Guid.NewGuid();
-        var cacheExpiry = TimeSpan.FromHours(12);
 
         await _redisClient.SetAsync(randomKey, value, _cacheExpiry);
         return Ok(randomKey);
