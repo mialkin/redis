@@ -17,7 +17,7 @@ public class RedisController : ControllerBase
     public async Task<IActionResult> AddRandomKeyValue()
     {
         var randomKey = "random_key:" + Guid.NewGuid();
-        var value = "value_" + Guid.NewGuid();
+        var value = "random_value_" + Guid.NewGuid();
 
         await _redisClient.SetAsync(randomKey, value, _cacheExpiry);
         return Ok(randomKey);
