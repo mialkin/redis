@@ -8,3 +8,8 @@ services:
       ALLOW_EMPTY_PASSWORD: "yes"
     ports:
       - "${REDIS_PORT}:6379"
+  redisinsight:
+    image: redislabs/redisinsight:latest
+    container_name: redisinsight
+    ports:
+      - "${REDISINSIGHT_PORT}:8001"
