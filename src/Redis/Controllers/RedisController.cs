@@ -29,11 +29,19 @@ public class RedisController : ControllerBase
         var value = await _redisClient.GetAsync<string>(key);
         return Ok(value);
     }
-    
+
     [HttpGet("get-keys-by-pattern")]
     public IActionResult GetKeysByPattern(string pattern)
     {
         var value = _redisClient.GetKeysByPattern(pattern);
         return Ok(value);
+    }
+
+    [HttpPost("delete-key")]
+    public async Task<IActionResult> DeleteKey(string key)
+    {
+        await _redisClient.DeleteAsync(key);
+
+        return Ok();
     }
 }

@@ -10,4 +10,5 @@ public interface IRedisClient
     public Task<T?> GetAsync<T>(string key);
     public Task<bool> ExistsAsync(string key);
     public List<string> GetKeysByPattern(string pattern);
+    public Task DeleteAsync(string key);
 }
