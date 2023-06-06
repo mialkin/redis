@@ -13,3 +13,7 @@ In RedisInsight UI:
 
 1. Select **I already have a database** → **Connect to a Redis Database**.
 2. Use `host.docker.internal` for host, `4020` for port, and `0` for database name.
+
+## Documentation
+
+[↑ StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis)

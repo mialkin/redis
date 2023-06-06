@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -38,4 +40,17 @@ public class RedisClient : IRedisClient
     }
 
     public Task<bool> ExistsAsync(string key) => Database.KeyExistsAsync(key);
+    public List<string> GetKeysByPattern(string pattern)
+    {
+        var endpoints = _connectionMultiplexer.GetEndPoints();
+        var server = _connectionMultiplexer.GetServer(endpoints.First());
+
+        var keys = new List<string>();
+        
+        foreach(var key in server.Keys(pattern: pattern)) {
+            keys.Add(key);
+        }
+
+        return keys;
+    }
 }
