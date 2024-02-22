@@ -8,8 +8,8 @@ namespace Redis.Controllers;
 [Route("redis")]
 public class RedisController : ControllerBase
 {
-    private readonly IRedisClient _redisClient;
     private readonly TimeSpan _cacheExpiry = TimeSpan.FromHours(12);
+    private readonly IRedisClient _redisClient;
 
     public RedisController(IRedisClient redisClient) => _redisClient = redisClient;
 

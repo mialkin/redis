@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		Makefile = Makefile
 		.env.example = .env.example
 		readme.md = readme.md
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Global

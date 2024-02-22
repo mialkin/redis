@@ -18,7 +18,7 @@ public static class RedisConfiguration
             var options = ConfigurationOptions.Parse(Guard.Against.NullOrWhiteSpace(redisSettings.Configuration));
             return ConnectionMultiplexer.Connect(options);
         });
-        
+
         services.AddSingleton<IRedisClient, RedisClient>();
     }
 }
